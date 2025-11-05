@@ -40,4 +40,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<Customer> getCustomerById(Long id) {
+        return customerRepository.findById(id);
+    }
 }
