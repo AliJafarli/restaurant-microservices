@@ -9,4 +9,6 @@ public interface ICustomerService {
     void createCustomer(Customer customer);
 
     List<Customer> getAllCustomers();
+
+    void updateCustomer(Customer customer);
 }
