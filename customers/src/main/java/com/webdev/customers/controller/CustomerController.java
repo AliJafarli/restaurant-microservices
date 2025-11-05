@@ -27,4 +27,10 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.getAllCustomers());
     }
 
+    @PutMapping
+    public ResponseEntity<String> updateCustomer(@RequestBody Customer customer) {
+        customerService.updateCustomer(customer);
+        return ResponseEntity.ok("Customer updated successfully!");
+    }
+
 }
