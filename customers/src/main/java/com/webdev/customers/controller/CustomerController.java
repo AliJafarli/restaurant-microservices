@@ -18,7 +18,7 @@ public class CustomerController {
 
 public ResponseEntity<String> createCustomer(@RequestBody Customer customer) {
     customerService.createCustomer(customer);
-    return ResponseEntity.ok("Customer created and added to the database");
+    return ResponseEntity.ok("Customer created and added to the database!");
 }
 
 }
