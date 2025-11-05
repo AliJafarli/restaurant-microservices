@@ -7,6 +7,7 @@ import com.webdev.customers.service.ICustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,5 +24,10 @@ public class CustomerServiceImpl implements ICustomerService {
                     "Customer with email %s already exists", customer.getEmail()));
         }
         customerRepository.save(customer);
+    }
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        return customerRepository.findAll();
     }
 }
