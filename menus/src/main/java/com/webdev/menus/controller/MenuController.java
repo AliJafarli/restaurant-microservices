@@ -34,4 +34,10 @@ public class MenuController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PutMapping
+    public ResponseEntity<String> updateMenu(@RequestBody Menu menu) {
+        menuService.updateMenu(menu);
+        return ResponseEntity.ok("Menu updated successfully");
+    }
 }

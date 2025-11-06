@@ -30,4 +30,9 @@ public class MenuServiceImpl implements IMenuService {
     public Optional<Menu> getMenuById(Long id) {
         return menuRepository.findById(id);
     }
+
+    @Override
+    public void updateMenu(Menu menu) {
+        menuRepository.save(menu);
+    }
 }
