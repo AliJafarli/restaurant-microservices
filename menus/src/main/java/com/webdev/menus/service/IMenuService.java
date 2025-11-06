@@ -13,4 +13,6 @@ public interface IMenuService {
     List<Menu> getAllMenus();
 
     Optional<Menu> getMenuById(Long id);
+
+    void updateMenu(Menu menu);
 }
