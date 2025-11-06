@@ -4,11 +4,10 @@ import com.webdev.menus.constants.MenuConstants;
 import com.webdev.menus.service.IMenuService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.webdev.menus.entity.Menu;
+
+import java.util.List;
 
 
 @RestController
@@ -24,5 +23,8 @@ public class MenuController {
         return ResponseEntity.ok(MenuConstants.MENU_CREATED_MESSAGE);
     }
 
-
+    @GetMapping
+    public ResponseEntity<List<Menu>> getAllMenus() {
+        return ResponseEntity.ok(menuService.getAllMenus());
+    }
 }
