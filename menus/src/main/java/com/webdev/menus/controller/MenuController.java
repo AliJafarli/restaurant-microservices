@@ -28,7 +28,7 @@ public class MenuController {
         return ResponseEntity.ok(menuService.getAllMenus());
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<Menu> getMenuById(@PathVariable Long id) {
         return menuService.getMenuById(id)
                 .map(ResponseEntity::ok)
@@ -39,5 +39,11 @@ public class MenuController {
     public ResponseEntity<String> updateMenu(@RequestBody Menu menu) {
         menuService.updateMenu(menu);
         return ResponseEntity.ok("Menu updated successfully");
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteMenu(@PathVariable Long id) {
+        menuService.deleteMenu(id);
+        return ResponseEntity.ok("Menu deleted successfully");
     }
 }
