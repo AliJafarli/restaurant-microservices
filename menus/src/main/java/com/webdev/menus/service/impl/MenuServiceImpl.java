@@ -35,4 +35,9 @@ public class MenuServiceImpl implements IMenuService {
     public void updateMenu(Menu menu) {
         menuRepository.save(menu);
     }
+
+    @Override
+    public void deleteMenu(Long id) {
+        menuRepository.deleteById(id);
+    }
 }
