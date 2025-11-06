@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.webdev.menus.entity.Menu;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -23,5 +24,10 @@ public class MenuServiceImpl implements IMenuService {
     @Override
     public List<Menu> getAllMenus() {
         return menuRepository.findAll();
+    }
+
+    @Override
+    public Optional<Menu> getMenuById(Long id) {
+        return menuRepository.findById(id);
     }
 }

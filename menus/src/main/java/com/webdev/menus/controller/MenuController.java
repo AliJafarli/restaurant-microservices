@@ -27,4 +27,11 @@ public class MenuController {
     public ResponseEntity<List<Menu>> getAllMenus() {
         return ResponseEntity.ok(menuService.getAllMenus());
     }
+
+    @GetMapping
+    public ResponseEntity<Menu> getMenuById(@PathVariable Long id) {
+        return menuService.getMenuById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 }
