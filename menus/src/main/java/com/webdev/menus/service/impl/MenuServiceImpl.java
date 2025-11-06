@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.webdev.menus.entity.Menu;
 
+import java.util.List;
 
 
 @Service
@@ -17,5 +18,10 @@ public class MenuServiceImpl implements IMenuService {
     @Override
     public Menu saveMenu(Menu menu) {
         return menuRepository.save(menu);
+    }
+
+    @Override
+    public List<Menu> getAllMenus() {
+        return menuRepository.findAll();
     }
 }
