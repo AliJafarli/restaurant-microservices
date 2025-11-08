@@ -1,5 +1,6 @@
 package com.webdev.orders.service;
 
+import com.webdev.orders.dto.OrderDetailDTO;
 import com.webdev.orders.entity.Order;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface IOrderService {
     List<Order> getAllOrders();
 
     Optional<Order> getOrderById(Long id);
+
+    OrderDetailDTO getOrderDetail(Long id);
 }

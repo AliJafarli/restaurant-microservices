@@ -2,6 +2,7 @@ package com.webdev.orders.service.impl;
 
 import com.webdev.customers.entity.Customer;
 import com.webdev.orders.constants.OrdersConstants;
+import com.webdev.orders.dto.OrderDetailDTO;
 import com.webdev.orders.entity.Order;
 import com.webdev.orders.repository.OrderRepository;
 import com.webdev.orders.service.IOrderService;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -42,5 +44,16 @@ public class OrderService implements IOrderService {
     @Override
     public Optional<Order> getOrderById(Long id) {
         return orderRepository.findById(id);
+    }
+
+    @Override
+    public OrderDetailDTO getOrderDetail(Long id) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
+
+        Customer customer = restTemplate.getForObject(OrdersConstants.CUSTOMER_SERVICE_URL + order.getCustomerId(), Customer.class);
+        Menu menu = restTemplate.getForObject(OrdersConstants.MENU_SERVICE_URL + order.getMenuId(), Menu.class);
+
+        return new OrderDetailDTO(customer.getName(), menu.getName(),order.getOrderDate());
     }
 }
