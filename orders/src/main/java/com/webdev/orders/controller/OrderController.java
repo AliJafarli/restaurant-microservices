@@ -1,5 +1,6 @@
 package com.webdev.orders.controller;
 
+import com.webdev.orders.dto.OrderDetailDTO;
 import com.webdev.orders.entity.Order;
 import com.webdev.orders.service.IOrderService;
 import lombok.AllArgsConstructor;
@@ -31,5 +32,11 @@ public class OrderController {
         return orderService.getOrderById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<OrderDetailDTO> getOrderDetail(@PathVariable Long id) {
+        OrderDetailDTO detail = orderService.getOrderDetail(id);
+        return ResponseEntity.ok(detail);
     }
 }
