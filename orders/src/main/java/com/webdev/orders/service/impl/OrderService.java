@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -30,5 +31,10 @@ public class OrderService implements IOrderService {
         order.setOrderDate(LocalDateTime.now());
         return orderRepository.save(order);
 
+    }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
     }
 }
