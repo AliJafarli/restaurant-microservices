@@ -1,5 +1,6 @@
 package com.webdev.customers.controller;
 
+import com.webdev.customers.constants.Constants;
 import com.webdev.customers.entity.Customer;
 import com.webdev.customers.service.ICustomerService;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<String> createCustomer(@RequestBody Customer customer) {
         customerService.createCustomer(customer);
-        return ResponseEntity.ok("Customer created and added to the database!");
+        return ResponseEntity.ok(Constants.CUSTOMER_CREATED_MESSAGE);
     }
 
     @GetMapping
@@ -30,13 +31,13 @@ public class CustomerController {
     @PutMapping
     public ResponseEntity<String> updateCustomer(@RequestBody Customer customer) {
         customerService.updateCustomer(customer);
-        return ResponseEntity.ok("Customer updated successfully!");
+        return ResponseEntity.ok(Constants.CUSTOMER_UPDATED_MESSAGE);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
-        return ResponseEntity.ok("Customer deleted successfully!");
+        return ResponseEntity.ok(Constants.CUSTOMER_DELETED_MESSAGE);
     }
 
     @GetMapping("/{id}")

@@ -38,12 +38,12 @@ public class MenuController {
     @PutMapping
     public ResponseEntity<String> updateMenu(@RequestBody Menu menu) {
         menuService.updateMenu(menu);
-        return ResponseEntity.ok("Menu updated successfully");
+        return ResponseEntity.ok(MenuConstants.MENU_UPDATED_MESSAGE);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteMenu(@PathVariable Long id) {
         menuService.deleteMenu(id);
-        return ResponseEntity.ok("Menu deleted successfully");
+        return ResponseEntity.ok(MenuConstants.MENU_DELETED_MESSAGE);
     }
 }
