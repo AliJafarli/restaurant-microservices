@@ -34,7 +34,7 @@ public class OrderController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping
+    @GetMapping("/details/{id}")
     public ResponseEntity<OrderDetailDTO> getOrderDetail(@PathVariable Long id) {
         OrderDetailDTO detail = orderService.getOrderDetail(id);
         return ResponseEntity.ok(detail);
